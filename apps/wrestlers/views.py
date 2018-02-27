@@ -10,10 +10,10 @@ def index(req):
     }
     return render(req, 'wrestlers/index.html', context)
 
-def create():
-    name = request.form['name'],
-    weight = request.form['weight'],
-    nick_name = request.form['nick_name']
+def create(req):
+    name = request.POST['name']
+    weight = request.POST['weight']
+    nick_name = request.POST['nick_name']
     Wrestler.objects.create(name=name, weight=weight, nick_name=nick_name)
     return redirect('/wrestlers')
 
