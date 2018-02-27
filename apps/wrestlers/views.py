@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Wrestler
 # Create your views here.
 def index(req):
@@ -11,9 +11,9 @@ def index(req):
     return render(req, 'wrestlers/index.html', context)
 
 def create(req):
-    name = request.POST['name']
-    weight = request.POST['weight']
-    nick_name = request.POST['nick_name']
+    name = req.POST['name']
+    weight = req.POST['weight']
+    nick_name = req.POST['nick_name']
     Wrestler.objects.create(name=name, weight=weight, nick_name=nick_name)
     return redirect('/wrestlers')
 
